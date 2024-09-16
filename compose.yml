@@ -1,0 +1,12 @@
+services:
+  app:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      # フロントエンドのソースコードをコンテナ内の/appディレクトリにマウント
+      - ./frontend:/app
+      # node_modulesディレクトリをコンテナ内に保持し、ホストのファイルシステムと同期しないようにする
+      - /app/node_modules
